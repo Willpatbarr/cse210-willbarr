@@ -3,18 +3,14 @@ using System;
 class Program
 {
     static void Main(string[] args)
-    {// create two new instances of job
-        Job job1 = new Job("Software Engineer", "Microsoft", 2019, 2022);
-        Job job2 = new Job("Manager", "Apple", 2022, 2023);
+    {
+        Fraction fraction1 = new Fraction();
+        Console.WriteLine(fraction1.GetFractionString());
 
-        job1.Display();
-        job2.Display();
+        Fraction fraction2 = new Fraction(5);
+        Console.WriteLine(fraction2.GetFractionString());
 
-        // create new instance of resume
-        Resume myResume = new Resume("John Doe");
-        myResume.AddJob(job1);
-        myResume.AddJob(job2);
-
-        myResume.Display();
+        Fraction fraction3 = new Fraction(6, 2);
+        Console.WriteLine(fraction3.GetFractionString());
     }
 }
