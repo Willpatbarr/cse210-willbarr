@@ -96,4 +96,12 @@ List<int> numbers = new List<int>();
 List<string> words = new List<string>();
 
 
+//
+// functions
+// 
+public void FunctionName(string parameter)
+{}
+// idk what public does, void is the section talking about what it returns
+// in the parameters you have to clarify what data type the paramter should be
+
 
