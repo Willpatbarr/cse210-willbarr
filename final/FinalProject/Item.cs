@@ -34,9 +34,17 @@ public class Item
         string name = _namesList[_randIndex];
         _name = name;
     }
+    public void SetName(string name)
+    {
+        _name = name;
+    }
     public void SetDescription()
     {
         string description = _descriptionsList[_randIndex];
+        _description = description;
+    }
+    public void SetDescription(string description)
+    {
         _description = description;
     }
     public void SetItemType(string type)
@@ -55,14 +63,14 @@ public class Item
     {
         return _requiredLevel;
     }
-    public void PrintSlowly(string sentence)
-    {
-        foreach (var letter in sentence)
-        {
-            Console.Write(letter);
-            Thread.Sleep(25);
-        }
-    }
+    // public void PrintSlowly(string sentence)
+    // {
+    //     foreach (var letter in sentence)
+    //     {
+    //         Console.Write(letter);
+    //         Thread.Sleep(25);
+    //     }
+    // }
     public string GetName()
     {
         return _name;

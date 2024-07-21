@@ -28,13 +28,14 @@ public class Enemy : Character
     public Enemy(Armor armor, Weapon weapon)
     {
         Random rand = new Random();
-        int randIndex = rand.Next(11);
+        int randIndex = rand.Next(10);
         SetName(_namesList[randIndex]);
         _description = _descriptionsList[randIndex];
         SetArmor(armor);
         SetWeapon(weapon);
-        AddHealth(rand.Next(100,201));
+        AddHealth(rand.Next(20,101));
         _xpWorth = (GetHealth() - 80) * 2;
+        SetLevel(rand.Next(1,11));
     }
 
     public void Spawn()
@@ -48,8 +49,12 @@ public class Enemy : Character
         Weapon : {GetWeapon().GetName()} ({GetWeapon().GetWeaponType()})
             Damage : {GetWeapon().GetDamage()}
         """);
-        PrintSlowly(sentence1);
+        Console.WriteLine(sentence1);
         Console.WriteLine();
+    }
+    public int GetXpWorth()
+    {
+        return _xpWorth;
     }
 
 }

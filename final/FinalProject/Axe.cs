@@ -25,8 +25,7 @@ public class Axe : Weapon
 );
         SetName();
         SetDescription();
-        SetDamagePerHit(rand.Next(31));
-        SetHitsPerAttack(1);
+        SetDamagePerHit(rand.Next(1,31));
         SetAccuracy();
         SetRequiredLevel(rand.Next(11));
     }
@@ -54,7 +53,6 @@ public class Axe : Weapon
         SetName();
         SetDescription();
         SetDamagePerHit(level + 10);
-        SetHitsPerAttack(1);
         SetAccuracy();
         SetRequiredLevel(level);
     }

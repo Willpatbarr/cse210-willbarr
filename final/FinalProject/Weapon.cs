@@ -4,13 +4,16 @@ using System.Security.Cryptography.X509Certificates;
 public class Weapon : Item
 {
     private string _weaponType;
-    private int _damagePerHit;
-    private int _hitsPerAttack;
+    private int _damage;
     private int _accuracy = 5;
 
     public void SetAccuracy()
     {
         _accuracy = GetRand().Next(11);
+    }
+    public void SetAccuracy(int accuracy)
+    {
+        _accuracy = accuracy;
     }
     public bool AccuracyCheck()
     {
@@ -24,32 +27,24 @@ public class Weapon : Item
             return false;
         }
     }
-    public int DealDamage()
+    public virtual int DealDamage()
     {
         int totalDamage = 0;
-        for (int i = 0; i < _hitsPerAttack; i++)
-        {
             Console.WriteLine("Swing...");
-            Thread.Sleep(2000);
             if (AccuracyCheck())
             {
-                Console.WriteLine("Hit!");
-                totalDamage += _damagePerHit;
+                Console.WriteLine($"Hit! {_damage} dealt");
+                totalDamage += _damage;
             }
             else 
             {
                 Console.WriteLine("Oh no! Miss!");
             }
-        }
         return totalDamage;
     }
     public void SetDamagePerHit(int damage)
     {
-        _damagePerHit = damage;
-    }
-    public void SetHitsPerAttack(int hits)
-    {
-        _hitsPerAttack = hits;
+        _damage = damage;
     }
     public void SetWeaponType(string type)
     {
@@ -61,7 +56,7 @@ public class Weapon : Item
     }
     public int GetDamage()
     {
-        return _damagePerHit;
+        return _damage;
     }
 
 }

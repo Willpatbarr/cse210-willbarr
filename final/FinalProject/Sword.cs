@@ -21,11 +21,10 @@ public class Sword : Weapon
 "A cursed sword that drains the blood of its victims, growing more powerful with each kill.",
 "A deadly sword that was used to slay kings, feared for its lethal precision and speed.",
 "A brilliant sword that shines with the power of the sun, blinding enemies with its radiant light."
-);
+        );
         SetName();
         SetDescription();
-        SetDamagePerHit(rand.Next(11));
-        SetHitsPerAttack(3);
+        SetDamagePerHit(rand.Next(1,11));
         SetAccuracy();
         SetRequiredLevel(rand.Next(11));
     }
@@ -48,13 +47,30 @@ public class Sword : Weapon
 "A cursed sword that drains the blood of its victims, growing more powerful with each kill.",
 "A deadly sword that was used to slay kings, feared for its lethal precision and speed.",
 "A brilliant sword that shines with the power of the sun, blinding enemies with its radiant light."
-);
+        );
         SetName();
         SetDescription();
         SetDamagePerHit(level + 5);
-        SetHitsPerAttack(3);
         SetAccuracy();
         SetRequiredLevel(level);
+    }
+    public override int DealDamage()
+    {
+        int totalDamage = 0;
+        for (int i = 0; i < 3; i++)
+        {
+            Console.WriteLine("Slice...");
+            if (AccuracyCheck())
+            {
+                Console.WriteLine($"Hit! {GetDamage()} dealt");
+                totalDamage += GetDamage();
+            }
+            else 
+            {
+                Console.WriteLine("Oh no! Miss!");
+            }
+        }
+        return totalDamage;
 
     }
 }

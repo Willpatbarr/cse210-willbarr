@@ -2,22 +2,16 @@ using System;
 
 public class Story
 {
-    private string _storySaveFileName;
     private int _distanceToCastle;
     private Player _playerCharacter;
 
     public Story(int difficulty, string playerName)
     {
-        _storySaveFileName = "";
         _distanceToCastle = difficulty * 500;
         Sword swordLVL1 = new Sword(1);
         Armor armorLVL1 = new Armor(1);
         Player player = new Player(playerName, swordLVL1, armorLVL1);
         _playerCharacter = player;
-    }
-    public Story(string storySaveFileName, int distanceToCastle, Player playerCharacter)
-    {
-        //to be added at the end of time allows
     }
 
     public void StartJourney()
@@ -32,39 +26,43 @@ public class Story
         slay what you must.
 
         (you look up from the scroll and head down the path to the castle)
+        
         ({_distanceToCastle} meters remain)
         """;
-        PrintSlowly(sentence);
+        Console.WriteLine(sentence);
         Console.WriteLine("");
         //generate intro paragraph that details the journey to the castle
         //and includes you're stats and items
     }
     public void ReachCastle()
     {
-        //generates ending paragraph to tell the player they won
-    }
-    public void SaveStory()
-    {
-        //to be added with the save and loading feature if time allows
+        Console.WriteLine("\nCongratulations!\nYou have reached the castle and can now\nhelp to reinforce it against evil");
     }
     public bool WinCheck()
     {
-        return false;//checks to see if the playre has reached the castle
+        if (_distanceToCastle > 0)
+        {
+            return false;
+        }
+        else
+        {
+            return true;
+        }
     }
     public void EndJourney()
     {
-
-    }
-    public void PrintSlowly(string sentence)
-    {
-        foreach (var letter in sentence)
-        {
-            Console.Write(letter);
-            Thread.Sleep(25);
-        }
+        Console.WriteLine("\nYour journey has ended...");
     }
     public Player GetPlayerCharacter()
     {
         return _playerCharacter;
+    }
+    public void ApproachCastle(int distance)
+    {
+        _distanceToCastle -= distance;
+    }
+    public int GetDistanceToCastle()
+    {
+        return _distanceToCastle;
     }
 }
